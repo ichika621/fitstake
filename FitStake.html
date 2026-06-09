@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitStake - 運動ゲーミフィケーション</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { emerald: { 500: '#10b981', 600: '#059669' }, dark: '#0f172a' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .app-container { max-width: 414px; margin: 0 auto; background: #0f172a; color: white; min-height: 100vh; position: relative; padding-bottom: 80px; box-shadow: 0 0 20px rgba(0,0,0,0.1); overflow-x: hidden; }
+        .tab-content { display: none; padding: 20px; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .glass-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 16px; backdrop-filter: blur(10px); }
+        .sponsor-banner { background: linear-gradient(45deg, #10b981, #3b82f6); border-radius: 12px; padding: 12px; text-align: center; font-weight: bold; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <div class="flex justify-between items-center p-5 border-b border-gray-800 bg-dark sticky top-0 z-10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center font-bold">K</div>
+            <div>
+                <div class="text-sm text-gray-400">Welcome back,</div>
+                <div class="font-bold">Keisuke</div>
+            </div>
+        </div>
+        <div class="text-right">
+            <div class="text-xs text-gray-400">ウォレット残高</div>
+            <div class="font-bold text-emerald-500">¥12,500</div>
+        </div>
+    </div>
+    <div id="tab-home" class="tab-content active">
+        <div class="sponsor-banner shadow-lg">
+            <div class="text-xs text-white/80">今週の冠スポンサー</div>
+            <div class="text-lg">🏆 LifeFit 杯 開催中！</div>
+            <div class="text-xs mt-1">入賞者には確定賞金を進呈！</div>
+        </div>
+        <h2 class="text-xl font-bold mb-4">参加中のコンテスト</h2>
+        <div class="glass-card mb-6 border-l-4 border-l-emerald-500">
+            <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold">5km走行コンテスト (初級)</h3>
+                <span class="bg-emerald-500/20 text-emerald-500 text-xs px-2 py-1 rounded">開催中</span>
+            </div>
+            <div class="flex justify-between items-center text-sm text-gray-400 mb-3">
+                <span>残り: 3日と14時間</span>
+                <span class="text-[10px] bg-gray-800 px-2 py-1 rounded">順位判定: 期間内の合計走行距離</span>
+            </div>
+
+            <div class="flex justify-between text-sm mb-1">
+                <span>あなたの記録 (Strava連携)</span>
+                <span class="font-bold">3.2 km</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5 mb-4">
+                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 64%"></div>
+            </div>
+
+            <div class="text-xs text-gray-400 mb-2">現在のランキング（走行距離順）</div>
+            <div class="bg-black/30 rounded-lg p-2 mb-3 text-sm">
+                <div class="flex justify-between py-1 text-gray-300"><span>🥇 1位 Mika</span><span class="font-bold">7.8 km</span></div>
+                <div class="flex justify-between py-1 text-gray-300"><span>🥈 2位 Ren</span><span class="font-bold">6.1 km</span></div>
+                <div class="flex justify-between py-1 text-gray-300"><span>🥉 3位 Yuto</span><span class="font-bold">5.4 km</span></div>
+                <div class="flex justify-between py-1 text-emerald-400 border-t border-gray-700 mt-1 pt-1"><span>4位 あなた</span><span class="font-bold">3.2 km</span></div>
+            </div>
+
+            <div class="text-xs text-gray-400 mb-2">入賞賞金（確定・順位制）</div>
+            <div class="grid grid-cols-3 gap-2 mb-3">
+                <div class="bg-black/30 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥇 1位</div>
+                    <div class="font-bold text-emerald-500">¥500</div>
+                </div>
+                <div class="bg-black/30 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥈 2位</div>
+                    <div class="font-bold text-emerald-500">¥250</div>
+                </div>
+                <div class="bg-black/30 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥉 3位</div>
+                    <div class="font-bold text-emerald-500">¥100</div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center p-3 bg-black/30 rounded-lg">
+                <div>
+                    <div class="text-xs text-gray-400">あなたの参加費（返金対象）</div>
+                    <div class="font-bold text-gray-200">¥1,000</div>
+                </div>
+                <div class="text-right">
+                    <div class="text-xs text-gray-400">現在順位</div>
+                    <div class="font-bold text-emerald-500">暫定 4位</div>
+                </div>
+            </div>
+            <p class="text-[10px] text-gray-500 mt-2">※賞金額は運営があらかじめ確定しており、参加人数や参加費総額によって変動しません。</p>
+            <button onclick="document.getElementById('nav-track').click()" class="w-full mt-4 bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-lg text-sm font-bold transition">運動データを同期・提出</button>
+        </div>
+    </div>
+    <div id="tab-discover" class="tab-content">
+        <h2 class="text-xl font-bold mb-4">コンテストを探す</h2>
+        <p class="text-sm text-gray-400 mb-4">賞金は順位ごとに事前確定。難易度が高いほど達成のハードルが上がります。</p>
+        <div class="glass-card mb-4 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-3 py-1 font-bold rounded-bl-lg">達成難易度: 高</div>
+            <h3 class="font-bold text-lg mb-1">20km走行コンテスト (上級)</h3>
+            <p class="text-xs text-gray-400 mb-1">1週間以内に計20kmをランニングする。</p>
+            <p class="text-[11px] text-emerald-400 mb-3"><i class="fa-solid fa-flag-checkered mr-1"></i>順位判定: 期間内の合計走行距離（GPS実測）のみ</p>
+
+            <div class="text-xs text-gray-400 mb-2">入賞賞金（確定・順位制）</div>
+            <div class="grid grid-cols-3 gap-2 mb-3">
+                <div class="bg-gray-800 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥇 1位</div>
+                    <div class="font-bold text-emerald-500">¥1,800</div>
+                </div>
+                <div class="bg-gray-800 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥈 2位</div>
+                    <div class="font-bold text-emerald-500">¥1,000</div>
+                </div>
+                <div class="bg-gray-800 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥉 3位</div>
+                    <div class="font-bold text-emerald-500">¥600</div>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-2 rounded text-center mb-2">
+                <div class="text-xs text-gray-400">参加費（返金対象・手数料5%）</div>
+                <div class="font-bold">¥1,000</div>
+            </div>
+            <p class="text-[10px] text-gray-500 mb-4">※賞金は運営が事前に確定。参加人数・参加費総額により変動しません。</p>
+            <button onclick="openJoinModal('20km走行コンテスト', 1000)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-lg font-bold transition">このコンテストに参加</button>
+        </div>
+        <div class="glass-card mb-4 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-yellow-500 text-white text-xs px-3 py-1 font-bold rounded-bl-lg">達成難易度: 中</div>
+            <h3 class="font-bold text-lg mb-1">週3回ジムチェックイン</h3>
+            <p class="text-xs text-gray-400 mb-1">提携ジムの位置情報、または写真アップロード。</p>
+            <p class="text-[11px] text-emerald-400 mb-3"><i class="fa-solid fa-flag-checkered mr-1"></i>順位判定: 期間内のチェックイン回数のみ（同数は達成時刻が早い順）</p>
+
+            <div class="text-xs text-gray-400 mb-2">入賞賞金（確定・順位制）</div>
+            <div class="grid grid-cols-3 gap-2 mb-3">
+                <div class="bg-gray-800 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥇 1位</div>
+                    <div class="font-bold text-emerald-500">¥900</div>
+                </div>
+                <div class="bg-gray-800 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥈 2位</div>
+                    <div class="font-bold text-emerald-500">¥500</div>
+                </div>
+                <div class="bg-gray-800 p-2 rounded text-center">
+                    <div class="text-xs text-gray-400">🥉 3位</div>
+                    <div class="font-bold text-emerald-500">¥300</div>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-2 rounded text-center mb-2">
+                <div class="text-xs text-gray-400">参加費（返金対象・手数料5%）</div>
+                <div class="font-bold">¥1,000</div>
+            </div>
+            <p class="text-[10px] text-gray-500 mb-4">※賞金は運営が事前に確定。参加人数・参加費総額により変動しません。</p>
+            <button onclick="openJoinModal('週3回ジムチェックイン', 1000)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-lg font-bold transition">このコンテストに参加</button>
+        </div>
+    </div>
+    <div id="tab-track" class="tab-content">
+        <h2 class="text-xl font-bold mb-4">データ連携・判定</h2>
+        <div class="glass-card text-center py-8 mb-4">
+            <i class="fa-brands fa-strava text-5xl text-orange-500 mb-3"></i>
+            <h3 class="font-bold mb-2">Stravaと同期する</h3>
+            <p class="text-xs text-gray-400 mb-4">GPSデータを自動連携して不正を防止します。</p>
+            <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-bold transition">連携済 (最終同期: 10分前)</button>
+        </div>
+        <div class="glass-card text-center py-8">
+            <i class="fa-solid fa-camera text-4xl text-gray-400 mb-3"></i>
+            <h3 class="font-bold mb-2">写真・動画で報告</h3>
+            <p class="text-xs text-gray-400 mb-4">ジムのチェックイン画面や体重計などを提出。</p>
+            <button class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-full font-bold transition">アップロード</button>
+        </div>
+    </div>
+    <div id="tab-wallet" class="tab-content">
+        <h2 class="text-xl font-bold mb-4">ウォレット・法務設定</h2>
+        <div class="glass-card mb-4 text-center py-6">
+            <div class="text-gray-400 mb-1">出金可能残高</div>
+            <div class="text-4xl font-bold text-white mb-4">¥12,500</div>
+            <div class="flex gap-2 justify-center">
+                <button class="bg-emerald-600 px-6 py-2 rounded-lg font-bold">チャージ</button>
+                <button class="bg-gray-700 px-6 py-2 rounded-lg font-bold">銀行へ出金</button>
+            </div>
+        </div>
+        <h3 class="font-bold mb-2 text-sm text-gray-400">依存防止・コンプライアンス</h3>
+        <div class="glass-card">
+            <div class="flex justify-between items-center py-3 border-b border-gray-700">
+                <span class="text-sm"><i class="fa-solid fa-shield text-emerald-500 mr-2"></i>1回あたりの上限額設定</span>
+                <span class="text-sm font-bold">¥30,000</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-gray-700">
+                <span class="text-sm"><i class="fa-solid fa-user-check text-emerald-500 mr-2"></i>年齢確認 (18歳以上)</span>
+                <span class="text-xs bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">認証済</span>
+            </div>
+            <div class="flex justify-between items-center py-3">
+                <span class="text-sm"><i class="fa-solid fa-ban text-red-500 mr-2"></i>自己排除設定</span>
+                <button class="text-xs bg-gray-700 px-3 py-1 rounded">設定</button>
+            </div>
+        </div>
+    </div>
+    <div id="join-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center px-4">
+        <div class="bg-gray-900 border border-gray-700 rounded-xl w-full max-w-sm p-6 relative">
+            <button onclick="closeJoinModal()" class="absolute top-4 right-4 text-gray-400"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-xl font-bold mb-1" id="modal-title">コンテスト参加</h3>
+            <p class="text-xs text-gray-400 mb-4">※参加費は目標を達成すれば返金されます（手数料5%を除く）。上位入賞者には別途、確定賞金（スポンサー提供）を進呈します。</p>
+
+            <div class="bg-black/50 p-4 rounded-lg mb-4">
+                <div class="flex justify-between mb-2 pb-2 border-b border-gray-700">
+                    <span class="text-sm font-bold">参加費（デポジット）</span>
+                    <span class="font-bold text-emerald-500 text-lg" id="modal-total">¥0</span>
+                </div>
+                <div class="flex justify-between mb-1">
+                    <span class="text-xs text-gray-400">└ 達成時の返金額</span>
+                    <span class="text-sm text-emerald-400" id="modal-refund">¥0</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-xs text-gray-400">└ 手数料 (5%・非返金)</span>
+                    <span class="text-sm" id="modal-fee">¥0</span>
+                </div>
+            </div>
+            <label class="flex items-start gap-2 mb-6 cursor-pointer">
+                <input type="checkbox" class="mt-1 accent-emerald-500" id="agree-check">
+                <span class="text-xs text-gray-400">私は18歳以上であり、賞金額が運営により事前に確定していること、本結果が自己の努力に基づく技能コンテストであることに同意します。</span>
+            </label>
+            <button onclick="confirmJoin()" class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white py-3 rounded-lg font-bold transition">¥<span id="btn-total"></span> を預けて参加</button>
+        </div>
+    </div>
+    <div class="fixed bottom-0 w-full max-w-[414px] bg-dark border-t border-gray-800 flex justify-around py-3 pb-safe z-10">
+        <button id="nav-home" class="nav-btn text-emerald-500 flex flex-col items-center gap-1 w-1/4" onclick="switchTab('home')">
+            <i class="fa-solid fa-house text-xl"></i><span class="text-[10px] font-bold">ホーム</span>
+        </button>
+        <button id="nav-discover" class="nav-btn text-gray-500 hover:text-gray-300 flex flex-col items-center gap-1 w-1/4" onclick="switchTab('discover')">
+            <i class="fa-solid fa-compass text-xl"></i><span class="text-[10px] font-bold">探す</span>
+        </button>
+        <button id="nav-track" class="nav-btn text-gray-500 hover:text-gray-300 flex flex-col items-center gap-1 w-1/4" onclick="switchTab('track')">
+            <i class="fa-solid fa-stopwatch text-xl"></i><span class="text-[10px] font-bold">記録</span>
+        </button>
+        <button id="nav-wallet" class="nav-btn text-gray-500 hover:text-gray-300 flex flex-col items-center gap-1 w-1/4" onclick="switchTab('wallet')">
+            <i class="fa-solid fa-wallet text-xl"></i><span class="text-[10px] font-bold">ウォレット</span>
+        </button>
+    </div>
+</div>
+<script>
+    // Tab Switching Logic
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(el => {
+            el.classList.remove('text-emerald-500');
+            el.classList.add('text-gray-500');
+        });
+
+        document.getElementById('tab-' + tabId).classList.add('active');
+        document.getElementById('nav-' + tabId).classList.remove('text-gray-500');
+        document.getElementById('nav-' + tabId).classList.add('text-emerald-500');
+        window.scrollTo(0, 0);
+    }
+    // Modal Logic
+    function openJoinModal(title, deposit) {
+        // deposit = 参加費（デポジット）。手数料5%(非返金)、残り95%は達成で返金
+        const platformFee = Math.round(deposit * 0.05);
+        const refund = deposit - platformFee;
+
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-total').innerText = '¥' + deposit.toLocaleString();
+        document.getElementById('modal-refund').innerText = '¥' + refund.toLocaleString();
+        document.getElementById('modal-fee').innerText = '¥' + platformFee.toLocaleString();
+        document.getElementById('btn-total').innerText = deposit.toLocaleString();
+
+        document.getElementById('agree-check').checked = false;
+        document.getElementById('join-modal').classList.remove('hidden');
+    }
+    function closeJoinModal() {
+        document.getElementById('join-modal').classList.add('hidden');
+    }
+    function confirmJoin() {
+        if(!document.getElementById('agree-check').checked) {
+            alert("同意のチェックボックスにチェックを入れてください。");
+            return;
+        }
+        alert("デポジットを預けてコンテストにエントリーしました！達成すれば参加費は返金されます。目標達成を目指しましょう！");
+        closeJoinModal();
+        switchTab('home');
+    }
+</script>
+</body>
+</html>
